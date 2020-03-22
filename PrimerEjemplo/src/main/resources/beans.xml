@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="emailService" class="com.maria.beans.EmailService" autowire="byType">
+		<!-- <property name="saludator" ref="saludator"></property> -->
+	</bean>
+	
+	<bean id="saludator" class="com.maria.beans.Saludator" primary="true">
+	<!-- <bean id="saludator" class="com.maria.beans.Saludator" autowire-candidate="false"> -->
+		<property name="mensaje" value="Hola alumnos de openwebinars"></property>
+		<constructor-arg name="mensaje" value="Hola alumnos de openwebinars"></constructor-arg>
+	</bean>
+	
+	<bean id="englishSaludator" class="com.maria.beans.Saludator">
+		<constructor-arg name="mensaje" value="Hello world!"></constructor-arg>
+	</bean>
+</beans>
