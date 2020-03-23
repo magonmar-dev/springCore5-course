@@ -3,7 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="emailService" class="com.maria.beans.EmailService" autowire="byType">
+	<bean id="emailService" class="com.maria.beans.EmailService" autowire="byType" scope="singleton">
+	<!-- <bean id="emailService" class="com.maria.beans.EmailService" autowire="byType" scope="prototype"> -->
 		<!-- <property name="saludator" ref="saludator"></property> -->
 	</bean>
 	
