@@ -5,15 +5,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<context:annotation-config></context:annotation-config>
+	<!-- Esta anotación ya no es necesaria. La anotación de escaneo de componentes incluye su funcionamiento
+		<context:annotation-config /> -->
+
+	<context:component-scan base-package="com.maria.stereotypes" />	
 	
-	<bean id="peliculaDaoMemory" class="com.maria.annotation.PeliculaDAOImp"/>	
-	<bean id="peliculaService" class="com.maria.annotation.PeliculaService" />
-	
-	<bean id="catalogoClasicas" class="com.maria.annotation.CatalogoPeliculasClasicas">
-		<qualifier type="Epoca" value="clasicas" />
-	</bean>
-	<bean id="catalogoActuales" class="com.maria.annotation.CatalogoPeliculasActuales">
-		<qualifier type="Epoca" value="actuales" />
-	</bean>
 </beans>
