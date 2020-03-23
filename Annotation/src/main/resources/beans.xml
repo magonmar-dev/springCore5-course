@@ -11,6 +11,10 @@
 	<bean id="peliculaDaoMemory" class="com.maria.annotation.PeliculaDAOImp"/>	
 	<bean id="peliculaService" class="com.maria.annotation.PeliculaService" />
 	
-	<bean id="catalogoClasicas" class="com.maria.annotation.CatalogoPeliculasClasicas" />
-	<bean id="catalogoActuales" class="com.maria.annotation.CatalogoPeliculasActuales" primary="true"/>
+	<bean id="catalogoClasicas" class="com.maria.annotation.CatalogoPeliculasClasicas">
+		<qualifier type="Epoca" value="clasicas" />
+	</bean>
+	<bean id="catalogoActuales" class="com.maria.annotation.CatalogoPeliculasActuales">
+		<qualifier type="Epoca" value="actuales" />
+	</bean>
 </beans>

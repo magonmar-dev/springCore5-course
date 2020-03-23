@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.beans.factory.annotation.Qualifier;
 
 public class PeliculaDAOImp implements IPeliculaDAO {
 
 	private List<Pelicula> peliculas = new ArrayList<Pelicula>();
 	
 	@Autowired
+	// @Qualifier("catalogoClasicas")
+	@Epoca("clasicas")
 	private ICatalogoPeliculas catalogoPeliculas;
 
 	public void init() {
