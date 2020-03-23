@@ -2,6 +2,11 @@ package com.maria.annotation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,12 +16,21 @@ public class PeliculaDAOImp implements IPeliculaDAO {
 	private List<Pelicula> peliculas = new ArrayList<Pelicula>();
 	
 	@Autowired
-	// @Qualifier("catalogoClasicas")
-	@Epoca("clasicas")
-	private ICatalogoPeliculas catalogoPeliculas;
+	private Set<ICatalogoPeliculas> catalogosPeliculas;
 
+	@PostConstruct
 	public void init() {
-		peliculas.addAll(catalogoPeliculas.getPeliculas());
+		peliculas = catalogosPeliculas
+				.stream()
+				.map(catalogo -> catalogo.getPeliculas())
+				.flatMap(lista -> lista.stream())
+				.collect(Collectors.toCollection(ArrayList::new));
+	}
+	
+	@PreDestroy
+	public void destroy() {
+		System.out.println("Limpiando el almacén de películas");
+		peliculas.clear();
 	}
 	
 	public PeliculaDAOImp() {}

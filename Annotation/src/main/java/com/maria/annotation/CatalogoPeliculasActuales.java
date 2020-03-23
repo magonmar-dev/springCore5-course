@@ -3,6 +3,8 @@ package com.maria.annotation;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 public class CatalogoPeliculasActuales implements ICatalogoPeliculas {
 
 	public List<Pelicula> peliculas = new ArrayList<>();
@@ -11,6 +13,7 @@ public class CatalogoPeliculasActuales implements ICatalogoPeliculas {
 		return peliculas;
 	}
 	
+	@PostConstruct
 	public void init() {
 		peliculas.add(new Pelicula("Vengadores: Infinity War", "2018","Ciencia ficción"));
 		peliculas.add(new Pelicula("Black Panther","2018","Ciencia ficción"));
