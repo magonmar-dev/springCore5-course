@@ -9,8 +9,8 @@
 	</bean>
 	
 	<bean id="saludator" class="com.maria.beans.Saludator" primary="true">
-	<!-- <bean id="saludator" class="com.maria.beans.Saludator" autowire-candidate="false"> -->
-		<property name="mensaje" value="Hola alumnos de openwebinars"></property>
+	<!-- <bean id="saludator" class="com.maria.beans.Saludator" autowire-candidate="false">
+		<property name="mensaje" value="Hola alumnos de openwebinars"></property> -->
 		<constructor-arg name="mensaje" value="Hola alumnos de openwebinars"></constructor-arg>
 	</bean>
 	
