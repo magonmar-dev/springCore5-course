@@ -3,10 +3,7 @@ package com.maria.lifecycle;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
-
-public class PersonaDAOImplMemory implements IPersonaDAO, InitializingBean, DisposableBean {
+public class PersonaDAOImplMemory implements IPersonaDAO {
 	
 	List<Persona> personas = new ArrayList<Persona>();
 
@@ -35,14 +32,13 @@ public class PersonaDAOImplMemory implements IPersonaDAO, InitializingBean, Disp
 		personas.remove(persona);
 	}
 
-	public void afterPropertiesSet() throws Exception {
+	public void init() throws Exception {
 		insert(new Persona("Luismi", 35));
 		insert(new Persona("Ana", 32));
 		insert(new Persona("Pepe", 34));
 		insert(new Persona("Julia", 39));
 	}
 
-	@Override
 	public void destroy() throws Exception {
 		System.out.println("Limpiando los datos de la lista");
 		personas.clear();
