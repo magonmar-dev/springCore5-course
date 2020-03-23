@@ -2,7 +2,6 @@ package com.maria.annotation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,25 +9,11 @@ public class PeliculaDAOImp implements IPeliculaDAO {
 
 	private List<Pelicula> peliculas = new ArrayList<Pelicula>();
 	
-	@Autowired(required=false)
-	private Set<ICatalogoPeliculas> catalogosPeliculas;
-
-	/*
-	 * @Autowired public PeliculaDAOImp(@Nullable Set<ICatalogoPeliculas> catalogosPeliculas) { 
-	 * 	this.catalogosPeliculas = catalogosPeliculas; 
-	 * }
-	 * 
-	 * @Autowired public void setCatalogosPeliculas(Optional<Set<ICatalogoPeliculas>> catalogosPeliculas) {
-	 * 	this.catalogosPeliculas = catalogosPeliculas.orElse(null); 
-	 * }
-	 */
+	@Autowired
+	private ICatalogoPeliculas catalogoPeliculas;
 
 	public void init() {
-		if (catalogosPeliculas != null) {
-			for (ICatalogoPeliculas c : catalogosPeliculas) {
-				peliculas.addAll(c.getPeliculas());
-			}
-		}
+		peliculas.addAll(catalogoPeliculas.getPeliculas());
 	}
 	
 	public PeliculaDAOImp() {}
